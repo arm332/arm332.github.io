@@ -1,3 +1,7 @@
+## Seguros
+
+Veja [Seguros](seguros/README.md).
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/arm332/arm332.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
