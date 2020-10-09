@@ -1,6 +1,8 @@
 ## Seguros
 
-Veja [Seguros](seguros/README.md).
+Veja [Seguros1](https://arm332.github.io/arm332/seguros/README.md).
+
+Veja [Seguros2](https://arm332.github.io/arm332/arm332.github.io/seguros/README.md).
 
 ## Welcome to GitHub Pages
 
