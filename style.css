@@ -12,6 +12,18 @@
 	font: 16px/1.5 system-ui, sans-serif;
 }
 
+/* To style links appropriately, put the :hover rule after the :link and
+ * :visited rules but before the :active one, as defined by the LVHA-order:
+ * :link — :visited — :hover — :active.
+ *
+ * Note: The :hover pseudo-class is problematic on touchscreens. Depending
+ * on the browser, the :hover pseudo-class might never match, match only for
+ * a moment after touching an element, or continue to match even after the
+ * user has stopped touching and until the user touches another element.
+ *
+ * See <https://developer.mozilla.org/en-US/docs/Web/CSS/:hover>.
+ */
+
 a {
 	color: AccentColor;
 	text-decoration: none;
@@ -33,8 +45,16 @@ button {
 	font: inherit;
 }
 
-button:focus, button:hover {
+button:focus {
+	background: rgba(255, 255, 255, 0.15);
+}
+
+button:hover {
 	background: rgba(255, 255, 255, 0.25);
+}
+
+button:active {
+	background: rgba(255, 255, 255, 0.35);
 }
 
 footer p {
@@ -71,7 +91,7 @@ header {
 }
 
 header button {
-	padding: 01rem;
+	padding: 0 1rem;
 }
 
 header h1 {
@@ -123,6 +143,6 @@ section {
 
 @media (min-width: 90rem) {
 	:root {
-		font-size: 18px;
+		font-size: 18px; /* experimental */
 	}
 }
