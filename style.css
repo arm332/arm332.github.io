@@ -1,0 +1,113 @@
+* {
+	box-sizing: border-box;
+}
+
+:focus {
+	border-color: AccentColor;
+	outline: none;
+}
+
+:root {
+	/* color-scheme: light dark; */
+	font: 16px/1.5 system-ui, sans-serif;
+}
+
+a {
+	color: AccentColor;
+	text-decoration: none;
+}
+
+a:focus, a:hover {
+	text-decoration: underline;
+}
+
+footer p {
+	font-size: 0.8rem;
+	margin: 1.075rem 1rem;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	gap: 0.5rem;
+}
+
+h1 {
+	font-size: 1.5rem;
+	margin: 0.625rem 1rem;
+}
+
+h2 {
+	font-size: 1.25rem;
+	margin: 0.8125rem 1rem;
+}
+
+h3 {
+	font-size: 1rem;
+	margin: 1rem;
+}
+
+header {
+	background: AccentColor;
+	color: AccentColorText;
+	display: flex;
+}
+
+header a {
+	color: AccentColorText;
+	padding: 1rem;
+}
+
+header h1 {
+	flex: 1;
+}
+
+input, select, textarea {
+	border: 1px solid ButtonBorder;
+	border-radius: 0.25rem;
+	font: inherit;
+	margin: 0 1rem;
+	padding: 0.5rem;
+}
+
+input[type="submit"] {
+	cursor: pointer;
+}
+
+label {
+	font-weight: bold;
+	margin: 0 0.5rem;
+	padding: 1rem 0.5rem 0;
+}
+
+p {
+	margin: 1rem;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+/* Screen width >= 640px */
+
+@media (min-width: 40rem) {
+	article, form {
+		margin: 0 auto;
+		width: 40rem;
+	}
+}
+
+/* Screen width >= 1440px */
+
+@media (min-width: 90rem) {
+	:root {
+		font-size: 18px;
+	}
+}
