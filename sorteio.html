@@ -134,9 +134,8 @@
 				<textarea autofocus="yes" name="textarea1" required="yes" rows="5">Gabriela, Maria, Jaqueline, Aparecida, Sandra, Raquel, Cristiane, Beatriz, Andréia, Luana, Fabiana, Beatriz, Daniela, Natália, Luciana</textarea>
 				<label>Combinação</label>
 				<select name="select1">
-					<option value="2">2 à 2</option>
-					<option value="3">3 à 3</option>
-					<option value="4">4 à 4</option>
+					<option>Duplas</option>
+					<option>Todos Contra Todos</option>
 				</select>
 				<label>Resultado</label>
 				<textarea name="textarea2" readonly="yes" rows="5"></textarea>
@@ -158,40 +157,56 @@
 		// Resources:
 		// - <https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array>,
 		// - <https://stackoverflow.com/questions/8495687/split-array-into-chunks>
-
+		// - <https://stackoverflow.com/questions/43241174/javascript-generating-all-combinations-of-elements-in-a-single-array-in-pairs>
+		
 		section1.addEventListener("submit", async function(event) {
 			console.log("section1.submit");
 			event.preventDefault();
 
-			var f = event.target;
-			var e = f.elements.textarea1;
-			var v = e.value;
-			var a = v.split(',');
-			var i, j, x;
+			const form = event.target;
+			const textarea1 = form.elements.textarea1;
+			const value1 = textarea1.value;
+			const array = value1.split(',');
 			
-			for (i = 0; i < a.length; i++) {
-				a[i] = a[i].trim();
+			for (let i = 0; i < array.length; i++) {
+				array[i] = array[i].trim();
 			}
 			
-			for (i = a.length - 1; i > 0; i--) {
-				j = Math.floor(Math.random() * (i + 1));
-				x = a[i];
-				a[i] = a[j];
-				a[j] = x;
-			}
-			
-			e = f.elements.select1;
-			i = e.selectedIndex;
-			j = parseInt(e.options[i].value); // MUST not be zero
-			x = "";
+			const select1 = form.elements.select1;
+			const selectedIndex = select1.selectedIndex;
+			//const selectedOption = select1.options[selectedIndex];
+			//const selectedValue = parseInt(selectedOption.value); // MUST not be zero
+			let result = [];
 
-			for (i = 0; i < a.length; i += j) {
-				const chunk = a.slice(i, i + j);
-				x += chunk.join(", ") + "\n";
+			if (select1.selectedIndex == 0) {
+				for (let i = array.length - 1; i > 0; i--) {
+					let j = Math.floor(Math.random() * (i + 1));
+					let x = array[i];
+					array[i] = array[j];
+					array[j] = x;
+				}
+				
+				for (let i = 0; i < array.length - 1; i += 4) {
+					const chunk1 = array.slice(i, i + 2);
+					const chunk2 = array.slice(i + 2, i + 4);
+					result.push(chunk1.join(", ") + " x " + chunk2.join(", "));
+				}
+			}
+			else {
+				for (let i = 0; i < array.length - 1; i++) {
+					for (let j = i + 1; j < array.length - 2; j++) {
+						//result.push(array[i] + ", " + array[j]);
+						for (let k = j + 1; k < array.length - 3; k++) {
+							for (let n = k + 1; n < array.length - 4; n++) {
+								result.push(array[i] + ", " + array[j] + " x " + array[k] + ", " + array[n]);
+							}
+						}
+					}
+				}
 			}
 			
-			e = event.target.elements.textarea2;
-			e.value = x;
+			const textarea2 = form.elements.textarea2;
+			textarea2.value = result.join("\n");;
 		});
 		</script>
 	</body>
