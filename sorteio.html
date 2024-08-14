@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,125 +7,12 @@
 		<meta name="author" content="Project author" />
 		<title>Teste1</title>
 		<link href="favicon.svg" rel="icon" type="image/svg+xml" />
-		<style type="text/css">
-		* {
-			box-sizing: border-box;
-		}
-
-		:focus {
-			border-color: AccentColor;
-			outline: none;
-		}
-		
-		:root {
-			/* color-scheme: light dark; */
-			font: 16px/1.5 system-ui, sans-serif;
-		}
-		
-		a {
-			color: AccentColor;
-			text-decoration: none;
-		}
-
-		a:focus, a:hover {
-			text-decoration: underline;
-		}
-
-		footer p {
-			font-size: 0.8rem;
-			margin: 1.075rem 1rem;
-		}
-
-		form {
-			display: flex;
-			flex-direction: column;
-			flex: 1;
-			gap: 0.5rem;
-		}
-
-		h1 {
-			font-size: 1.5rem;
-			margin: 0.625rem 1rem;
-		}
-
-		h2 {
-			font-size: 1.25rem;
-			margin: 0.8125rem 1rem;
-		}
-
-		h3 {
-			font-size: 1rem;
-			margin: 1rem;
-		}
-
-		header {
-			background: AccentColor;
-			color: AccentColorText;
-			display: flex;
-		}
-
-		header a {
-			color: AccentColorText;
-			padding: 1rem;
-		}
-
-		header h1 {
-			flex: 1;
-		}
-
-		input, select, textarea {
-			border: 1px solid ButtonBorder;
-			border-radius: 0.25rem;
-			font: inherit;
-			margin: 0 1rem;
-			padding: 0.5rem;
-		}
-
-		input[type="submit"] {
-			cursor: pointer;
-		}
-
-		label {
-			font-weight: bold;
-			margin: 0 0.5rem;
-			padding: 1rem 0.5rem 0;
-		}
-		
-		p {
-			margin: 1rem;
-		}
-		
-		section {
-			display: flex;
-			flex-direction: column;
-			position: fixed;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-		}
-		
-		/* Screen width >= 640px */
-
-		@media (min-width: 40rem) {
-			article, form {
-				margin: 0 auto;
-				width: 40rem;
-			}
-		}
-
-		/* Screen width >= 1440px */
-
-		@media (min-width: 90rem) {
-			:root {
-				font-size: 18px;
-			}
-		}
-		</style>
+		<link href="style.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		<section id="section1">
 			<header>
+				<button id="backButton">Voltar</button>
 				<h1>Sorteio</h1>
 				<!-- <a href="#">Vai</a> -->
 			</header>
@@ -145,92 +32,7 @@
 				<p>Sobre | Privacidade | Termos</p>
 			</footer>
 		</section>
-		<script type="text/javascript">
-		"use strict";
-
-		// Test.
-		
-		self.addEventListener("DOMContentLoaded", function(event) {
-			console.log("window.DOMContentLoaded");
-		});
-		
-		// Resources:
-		// - <https://javascript.info/task/shuffle>
-		// - <https://stackoverflow.com/a/2450976>
-		// - <https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array>
-		// - <https://stackoverflow.com/questions/8495687/split-array-into-chunks>
-		// - <https://stackoverflow.com/questions/43241174/javascript-generating-all-combinations-of-elements-in-a-single-array-in-pairs>
-		// - <https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript>
-		
-		section1.addEventListener("submit", async function(event) {
-			console.log("section1.submit");
-			event.preventDefault();
-
-			const form = event.target;
-			const textarea1 = form.elements.textarea1;
-			const value1 = textarea1.value;
-			const array = value1.split(',');
-			
-			for (let i = 0; i < array.length; i++) {
-				array[i] = array[i].trim();
-			}
-			
-			const select1 = form.elements.select1;
-			const selectedIndex = select1.selectedIndex;
-			const aux = []
-			const res = [];
-
-			if (select1.selectedIndex == 0) {
-				//console.log(array);
-				
-				// The de-facto unbiased shuffle algorithm is the 
-				// Fisher–Yates (aka Knuth) Shuffle.
-				
-				for (let i = array.length - 1; i > 0; i--) {
-					// Pick a random index from 0 to i.
-					
-					let j = Math.floor(Math.random() * (i + 1));
-					
-					// And swap it with the current element.
-					// NOTE: using "destructuring assignment" syntax to achieve that.
-					
-					[array[i], array[j]] = [array[j], array[i]];
-				}
-				
-				//console.log(aux);
-				
-				for (let i = 0; i < array.length - 1; i += 4) {
-					const chunk1 = array.slice(i, i + 2);
-					const chunk2 = array.slice(i + 2, i + 4);
-					res.push(chunk1.join(", ") + " x " + chunk2.join(", "));
-				}
-				//console.log(res);
-			}
-			else {
-				//console.log(array);
-				
-				for (let i = 0; i < array.length; i++) {
-					for (let j = i + 1; j < array.length; j++) {
-						aux.push([array[i], array[j]]);
-					}
-				}
-				
-				//console.log(aux);
-				
-				for (let i = 0; i < aux.length; i++) {
-					for (let j = i + 1; j < aux.length; j++) {
-						if (!aux[i].some(e => aux[j].includes(e))) {
-							res.push(aux[i].join(", ") + " x " + aux[j].join(", "));
-						}
-					}
-				}
-				
-				//console.log(res);
-			}
-			
-			const textarea2 = form.elements.textarea2;
-			textarea2.value = res.join("\n");
-		});
-		</script>
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="sorteio.js"></script>
 	</body>
 </html>
