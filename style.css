@@ -47,25 +47,6 @@ article {
 	overflow: auto;
 }
 
-button {
-	background: inherit;
-	border: none;
-	color: inherit;
-	font: inherit;
-}
-
-button:focus {
-	background: rgba(255, 255, 255, 0.15);
-}
-
-button:hover {
-	background: rgba(255, 255, 255, 0.25);
-}
-
-button:active {
-	background: rgba(255, 255, 255, 0.35);
-}
-
 footer p {
 	font-size: 0.8rem;
 	margin: 1.075rem 1rem;
@@ -99,8 +80,23 @@ header {
 	display: flex;
 }
 
-header button {
-	padding: 0 1rem;
+header a {
+	color: inherit;
+	padding: 1rem;
+}
+
+header a:focus {
+	background: rgba(255, 255, 255, 0.15);
+	text-decoration: none;
+}
+
+header a:hover {
+	background: rgba(255, 255, 255, 0.25);
+	text-decoration: none;
+}
+
+header a:active {
+	background: rgba(255, 255, 255, 0.35);
 }
 
 header h1 {
@@ -148,10 +144,20 @@ section {
 	}
 }
 
-/* Screen width >= 1440px */
+/* Screen width >= 1440px (EXPERIMENTAL) */
 
-@media (min-width: 90rem) {
+@media (min-width: 60rem) {
 	:root {
-		font-size: 18px; /* experimental */
+		font-size: 18px;
+	}
+	
+	h1 {
+		margin-bottom: 0.375rem;
+		margin-top: 0.375rem;
+	}
+	
+	header a {
+		padding-bottom: 0.72rem;
+		padding-top: 0.72rem;
 	}
 }
