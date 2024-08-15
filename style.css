@@ -1,17 +1,3 @@
-* {
-	box-sizing: border-box;
-}
-
-:focus {
-	border-color: AccentColor;
-	outline: none;
-}
-
-:root {
-	/* color-scheme: light dark; */
-	font: 16px/1.5 system-ui, sans-serif;
-}
-
 /* To style links appropriately, put the :hover rule after the :link and
  * :visited rules but before the :active one, as defined by the LVHA-order:
  * :link — :visited — :hover — :active.
@@ -22,10 +8,33 @@
  * user has stopped touching and until the user touches another element.
  *
  * See <https://developer.mozilla.org/en-US/docs/Web/CSS/:hover>.
+ *
+ * The <system-color> CSS data type usually reflects the default color
+ * choices used for the different parts of a web page.
+ *
+ * TODO: does Chrome has support for this?
+ *
+ * See <https://developer.mozilla.org/en-US/docs/Web/CSS/system-color>.
  */
+* {
+	box-sizing: border-box;
+}
+
+:focus {
+	border-color: var(--accent-color);
+	outline: none;
+}
+
+:root {
+	--accent-color: #6699cc;
+	--accent-color-text: #ffffff;
+	--button-border: #c0c0c0;
+	/* color-scheme: light dark; */
+	font: 16px/1.5 system-ui, sans-serif;
+}
 
 a {
-	color: AccentColor;
+	color: var(--accent-color);
 	text-decoration: none;
 }
 
@@ -85,8 +94,8 @@ h3 {
 }
 
 header {
-	background: AccentColor;
-	color: AccentColorText;
+	background: var(--accent-color);
+	color: var(--accent-color-text);
 	display: flex;
 }
 
@@ -99,7 +108,7 @@ header h1 {
 }
 
 input, select, textarea {
-	border: 1px solid ButtonBorder;
+	border: 1px solid var(--button-border);
 	border-radius: 0.25rem;
 	font: inherit;
 	margin: 0 1rem;
